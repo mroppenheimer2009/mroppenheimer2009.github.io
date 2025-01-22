@@ -12,5 +12,6 @@ else if (hey = "Denton") {
   alert("The Catacombs");
 }
 
-
-
+else {
+  alert("What?");
+}
