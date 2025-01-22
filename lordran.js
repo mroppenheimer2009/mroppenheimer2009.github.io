@@ -4,10 +4,12 @@ var favoriteColor = prompt("Texas county that you're in:");
 
 if (favoriteColor === "Dallas") {
     alert("The Catacombs");
-} else if (favoriteColor === "red") {
-    alert("Red is a color of passion!");
-} else if (favoriteColor === "green") {
-    alert("Green represents nature and tranquility!");
+} else if (favoriteColor === "Tarrant") {
+    alert("The Catacombs");
+} else if (favoriteColor === "Denton") {
+    alert("The Catacombs");
+} else if (favoriteColor === "") {
+    alert("The Catacombs");
 } else {
-    alert("That's an interesting choice!");
+    alert("No");
 }
