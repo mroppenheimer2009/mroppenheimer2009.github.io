@@ -4,11 +4,11 @@ if (hey = "Dallas") {
   alert("The Catacombs");
 }
 
-if (hey = "Tarrant") {
+else if (hey = "Tarrant") {
   alert("The Catacombs");
 }
 
-if (hey = "Denton") {
+else if (hey = "Denton") {
   alert("The Catacombs");
 }
 
