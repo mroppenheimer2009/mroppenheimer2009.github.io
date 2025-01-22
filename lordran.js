@@ -1,17 +1,13 @@
-let hey = prompt("Texas County");
 
-if (hey = "Dallas") {
-  alert("The Catacombs");
-}
+var favoriteColor = prompt("Texas county that you're in:");
 
-else if (hey = "Tarrant") {
-  alert("The Catacombs");
-}
 
-else if (hey = "Denton") {
-  alert("The Catacombs");
-}
-
-else {
-  alert("What?");
+if (favoriteColor === "Dallas") {
+    alert("The Catacombs");
+} else if (favoriteColor === "red") {
+    alert("Red is a color of passion!");
+} else if (favoriteColor === "green") {
+    alert("Green represents nature and tranquility!");
+} else {
+    alert("That's an interesting choice!");
 }
