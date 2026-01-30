@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Link to the p5.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+</head>
+<body>
+  <script>
+    let player;
+let playerX = 0;
+const playerY = 260;
+
+let avoid;
+
+let score = 0;
+let lives = 4;
+
+let cx = 80;
+let cy = 5;
+let b;
+let cz = 255;
+
+
+let hamsandwich = 6;
+
+
+
+function preload() {
+
+  player = loadImage("https://res.cloudinary.com/duq3ys4at/image/upload/v1700159632/image_3_kkyosh.png");
+  avoidImage = loadImage("https://res.cloudinary.com/duq3ys4at/image/upload/c_scale,h_150,w_150/v1701279437/u4m3x9drbic71_nhcb4x.png");
+  b = loadImage("https://res.cloudinary.com/duq3ys4at/image/upload/v1701803201/135411-0_yi6ihc.png");
+}
+
+function setup() {
+    createCanvas(600, 400);
+    noStroke();
+    playerX = width/2;
+  
+  avoid = {
+    image : avoidImage,
+    x : 0,
+    y : 0,
+    visible : true,
+    
+  }
+  
+  
+  textSize(34);
+  fill(66, 239, 245);
+}
+function draw() {
+    // clear the screen
+    background(b, 100);
+
+    // draw the player
+    image(player, playerX - player.width/2, playerY - player.height/5);
+
+  
+  if(keyIsDown(82)){
+    lives = 4;
+    score = 0;
+    avoid.visible = false
+  }
+  
+  if(avoid.visible){
+  image(avoid.image, avoid.x - avoid.image.width/2, avoid.y - avoid.image.height/2 );
+  }
+  
+    fill(255)
+  textAlign(RIGHT);
+  text(score, 560, 50);
+  
+  textAlign(LEFT);
+  text("Lives: " + lives, 50, 50)
+  
+  if(lives <= 0){
+    textAlign(CENTER);
+    text("GAME OVER", width/2, height/2 - 0)
+    player = loadImage("https://res.cloudinary.com/duq3ys4at/image/upload/v1701806621/kghvcjhfvcvhgfggv_wpj9b3.png");
+    throw "";
+  }
+  
+  
+  if(keyIsDown(37) && playerX > 0){
+  playerX -= 5
+  }
+
+  
+  if(keyIsDown(39) && playerX < width){
+  playerX += 5
+    }
+  
+  if(keyIsDown(49)){
+  hamsandwich = 3.75
+    }
+  
+  if(keyIsDown(50)){
+  hamsandwich = 6
+    }
+  
+  if(keyIsDown(51)){
+  hamsandwich = 9
+    }
+  
+  if(keyIsDown(32)){
+  hamsandwich = 600
+    }
+ if(keyIsDown(52)){
+  hamsandwich = random(3.5, 12);
+    }  
+  
+  
+
+  
+  
+avoid.y += hamsandwich;
+  
+  if(avoid.y > height + avoid.image.height/2){
+    if(avoid.visible){
+    score += 100;
+    }
+    avoid.y = -avoid.image.height;
+    avoid.x = random (0,width);
+ avoid.visible = true;
+
+  
+  
+  
+  }
+  
+  if(isCollision(avoid)){
+  textAlign(CENTER);
+  lives -= 1
+   avoid.visible = false;
+  }
+}
+
+function isCollision(avoid){
+    const playerRadius = player.height/2;
+    const avoidRadius = avoid.image.height/20;
+   
+    return avoid.visible && sqrt(sq(avoid.x - playerX) + sq(avoid.y - playerY)) < playerRadius + avoidRadius;
+    
+  }
+
+//44444444
+
+
+
+  </script>
+</body>
+</html>
